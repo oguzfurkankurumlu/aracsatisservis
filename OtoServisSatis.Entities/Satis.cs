@@ -4,7 +4,7 @@ public class Satis : IEntity {
     public int AracId {get; set;}
     public DateTime SatisTarihi {get; set;}
     public decimal SatisFiyati {get; set;}
-    public virtual Musteri Musteri {get; set;}
-    public virtual Arac Arac {get; set;}
+    public virtual Musteri? Musteri {get; set;}
+    public virtual Arac? Arac {get; set;}
 
 }

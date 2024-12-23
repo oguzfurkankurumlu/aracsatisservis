@@ -8,3 +8,7 @@ public class DatabaseContext : DbContext{}
 olusturup ıcıne db leri tanımladım.
 
 data kısmında dbset yapıp fluentapi kısmını verdim
+
+daha sonra data klasorunde migration olusuturma
+dotnet tool install --global dotnet-ef
+dotnet ef migrations add InitialCreate

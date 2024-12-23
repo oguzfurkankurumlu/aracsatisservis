@@ -37,16 +37,19 @@ public class DatabaseContext : DbContext
     // Trusted_Connection=True; → Windows kimlik doğrulaması ile bağlantı yapılacağını belirtir.
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Server=.;Database=OtoServisSatis;Trusted_Connection=True; Security=true");
-        base.OnConfiguring(optionsBuilder);
+        optionsBuilder.UseSqlServer("Server=db11335.public.databaseasp.net; Database=db11335; User Id=db11335; Password=o=4N8tE?L2+h; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;");
     }
-    //bu kod bir Entity Framework Core (EF Core) yapılandırmasıdır ve 
+
     //veritabanı işlemleri için bir DbContext sınıfı tanımlamaktadır. 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // FLUENT API
+        modelBuilder.Entity<Marka>().Property(m => m.Ad).IsRequired().HasColumnType("varchar(50)");
+        modelBuilder.Entity<Rol>().Property(m => m.Ad).IsRequired().HasColumnType("varchar(50)");
+
         modelBuilder.Entity<Rol>().HasData(new Rol
-        {   Id = 1, 
+        {
+            Id = 1,
             Ad = "Admin"
         });
         modelBuilder.Entity<Kullanici>().HasData(new Kullanici
@@ -57,14 +60,11 @@ public class DatabaseContext : DbContext
             Telefon = "0850",
             AktifMi = true,
             EklenmeTarihi = DateTime.Now,
-            Email= "admin@otoservisaracsatis.tc",
+            Email = "admin@otoservisaracsatis.tc",
             KullaniciAdi = "admin",
-            Sifre ="123456",
+            Sifre = "123456",
             RolId = 1,
-            Rol = new Rol {
-                Id= 1,
-                Ad = "Admin"
-            }
+            //Rol = new Rol {Id= 1,}),
         });
         base.OnModelCreating(modelBuilder);
     }
